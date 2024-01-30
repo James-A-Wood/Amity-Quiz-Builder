@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <title>One World Quiz Builder</title>
+    <script src="js/libraries/jquery.js"></script>
+</head>
+
+<body>
+    <textarea id="textarea"
+        style="width: 95vw; height: 30vh; padding: 1rem; font-size: 1.5rem; margin-bottom: 1rem;"></textarea>
+    <div>
+        <button id="go-button">Go!</button>
+    </div>
+    <script>
+        const log = console.log;
+        const $textarea = $("#textarea");
+        const $button = $("#go-button");
+
+        $button.on("click", processData);
+
+        function processData() {
+            const obj = {};
+            const str = $textarea.val();
+            if (!str) return false;
+            str.split("\n").filter(item => item.length).forEach(line => {
+                line = line.split("\t");
+                obj[line[1]] = {
+                    page: line[0],
+                    english: line[1],
+                    japanese: line[3],
+                    year: "2",
+                };
+            });
+            log(obj);
+        }
+
+        // const thing = {
+        //     "mechanical": {
+        //         "japanese": "機械的な",
+        //         "page": "6",
+        //         "year": "1",
+        //         "english": "mechanical",
+        //     }
+        // }
+
+    </script>
+</body>
+
+</html>
